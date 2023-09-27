@@ -114,4 +114,5 @@ def profile_update(request,id):
     return render(request,'update.html',locals())
 
 def eeee(re):
+    a = 12
     pass
