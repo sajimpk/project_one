@@ -1,0 +1,100 @@
+{% extends 'base.html' %}
+{% block title %} Update {% endblock title%}
+{% block cs %}
+<style>
+    input,select{
+        margin-bottom: 10px;
+        margin-top: 5px;
+    }
+</style>
+{% endblock cs %}
+
+
+{% block body %}
+<div class="container">
+    <form action="" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="form-group">
+            {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+        <label for="exampleFormControlInput1">Enter Name</label>
+        <input type="text" class="form-control" value="{{profile.name}}" name="Name" >
+        </div>
+        <div class="form-group">
+            <img src="{{profile.image.url}}" alt="profile pic" style="height: 130px;
+            width: 130px;
+            border-radius: 50%;
+            border: 5px solid #272133;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 10px 50px rgba(235, 25, 110, 1);"><br>
+            <label for="exampleFormControlInput1" >image</label>
+            <input type="file" class="form-control" name="image" accept="image/*" >
+        </div>
+        <div class="form-group">
+            <label for="exampleFormControlInput1">email</label>
+            <input type="email" class="form-control" value="{{profile.email}}" name="email" id="exampleFormControlInput1" >
+        </div>
+        <div class="form-group">
+        <label for="exampleFormControlSelect1">gender</label>
+        <br>
+        <select  name="gender" >
+            <option selected disabled>Select Gender </option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+            <option value="Others">Others</option>
+        </select>
+        
+        </div>
+        <div class="form-group">
+            <label for="exampleFormControlInput1">address</label>
+            <input type="text" class="form-control" value="{{profile.address}}" name="address">
+        </div>
+        <div class="form-group">
+            <label for="exampleFormControlSelect1">religion</label>
+            <br>
+            <select  name="religion" >
+                <option selected disabled>Select Religion </option>
+                <option value="Islam">Islam</option>
+                <option value="Hindu">Hindu</option>
+                <option value="Buddha">Buddha</option>
+                <option value="Cristian">Cristian</option>
+                <option value="Others">Others</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="exampleFormControlSelect1">blood_group</label>
+            <br>
+            <select class=""  name="blood_group">
+                <option selected disabled>Select Blood Group </option>
+                <option value="A+">A+</option>
+                <option value="A-">A-</option>
+                <option value="B+">B+</option>
+                <option value="B-">B-</option>
+                <option value="AB+">AB+</option>
+                <option value="AB-">AB-</option>
+                <option value="O+">O+</option>
+                <option value="O-">O-</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="exampleFormControlInput1">Date_of_birth</label>
+            <span style="color: rgb(8, 193, 255);padding: 5px;"> : {{profile.Date_of_birth}} </span> 
+            <input type="date" class="form-control" value="{{profile.Date_of_birth}}"  id="exampleFormControlInput1" name="date_of_birth"  >
+        </div>
+        <div class="form-group">
+            <label for="exampleFormControlInput1">is_alive </label>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="inlineCheckbox1" name="is_alive" value="1">
+                <label class="form-check-label" for="inlineCheckbox1">Yes</label>
+            </div>
+        </div>
+        <button type="submit" style="margin-top: 10px;">Submit</button>
+    </form>
+</div>
+{% endblock body%}

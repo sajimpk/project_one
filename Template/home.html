@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block title %} Home page {% endblock title%}
+{% block body %}
+<div class="container">
+    <div class="row" style="margin-right: 10px;">
+        {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+    {% for i in profile%}
+    <div class="col-3" style="margin-top: 20px">
+    <div class="card" style="width: 18rem;">
+        <img class="card-img-top" src="{{i.image.url}}" alt="Card image cap" style="height: 350px">
+        <div class="card-body">
+        <h5 class="card-title">{{i.name}}</h5>
+        <p class="card-text">{{i.email}}</p>
+        <a href="{% url 'profile' i.id %}" class="btn btn-primary">See profile</a>
+        </div>
+    </div>
+    </div>
+    {% endfor %}
+    </div>
+</div>
+{% endblock body%}
