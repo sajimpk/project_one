@@ -1,3 +1,3 @@
 # project_one
-admin = ad
-pass = ad
+# admin = ad
+# pass = ad
