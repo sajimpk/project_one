@@ -12,16 +12,14 @@
 
 {% block body %}
 <div class="container">
+    {% if messages %}
+                {% for message in messages %}
+                <h4{% if message.tags %} class="{{ message.tags }}"{% endif %} style="text-align: center; margin-top: 5px;">{{ message }}</h4>
+                {% endfor %}
+    {% endif %}
     <form action="" method="post" enctype="multipart/form-data">
         {% csrf_token %}
         <div class="form-group">
-            {% if messages %}
-            <ul class="messages">
-                {% for message in messages %}
-                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-                {% endfor %}
-            </ul>
-            {% endif %}
         <label for="exampleFormControlInput1">Enter Name</label>
         <input type="text" class="form-control" value="{{profile.name}}" name="Name" >
         </div>
@@ -38,7 +36,7 @@
         </div>
         <div class="form-group">
             <label for="exampleFormControlInput1">email</label>
-            <input type="email" class="form-control" value="{{profile.email}}" name="email" id="exampleFormControlInput1" >
+            <input type="email" class="form-control" value="{{profile.email}}" name="email">
         </div>
         <div class="form-group">
         <label for="exampleFormControlSelect1">gender</label>
@@ -84,7 +82,7 @@
         </div>
         <div class="form-group">
             <label for="exampleFormControlInput1">Date_of_birth</label>
-            <span style="color: rgb(8, 193, 255);padding: 5px;"> : {{profile.Date_of_birth}} </span> 
+            <span style="color: rgb(8, 193, 255);padding: 5px;"> : {{profile.date_of_birth}} </span> 
             <input type="date" class="form-control" value="{{profile.Date_of_birth}}"  id="exampleFormControlInput1" name="date_of_birth"  >
         </div>
         <div class="form-group">

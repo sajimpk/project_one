@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block title %} delete page {% endblock title%}
+
+{% block body %}
+<div class="container">
+    <h4 style="text-align: center;"><u>DEACTIVES PROFILES</u></h4>
+    <div class="row" style="margin-right: 10px;">
+    {% for i in profile%}
+    <div class="col-3" style="margin-top: 20px">
+    <div class="card" style="width: 18rem;">
+        <img class="card-img-top" src="{{i.image.url}}" alt="Card image cap" style="height: 350px">
+        <div class="card-body">
+        <h5 class="card-title">{{i.name}}</h5>
+        <p class="card-text">{{i.email}}</p>
+        <a href="{% url 'active_profiles' i.id %}"><button class="btn1 draw-border" style="background-color: rgb(21, 11, 163); color:bisque">Active</button></a>
+        <a href="{% url 'delete_permanent' i.id %}"><button class="btn1 draw-border" style="background-color: rgb(191, 0, 0); color:bisque">Delete</button></a>
+        </div>
+    </div>
+    </div>
+    {% endfor %}
+    </div>
+</div>
+{% endblock body%}

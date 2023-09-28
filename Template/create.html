@@ -1,18 +1,25 @@
 {% extends 'base.html' %}
 
 {% block title %} create page {% endblock title%}
+
+{% block cs %}
+<style>
+    input,select{
+        margin-bottom: 10px;
+        margin-top: 5px;
+    }
+</style>
+{% endblock cs %}
 {% block body %}
 <div class="container">
+    {% if messages %}
+                {% for message in messages %}
+                <h4{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</h4>
+                {% endfor %}
+    {% endif %}
     <form action="" method="post" enctype="multipart/form-data">
         {% csrf_token %}
         <div class="form-group">
-            {% if messages %}
-            <ul class="messages">
-                {% for message in messages %}
-                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-                {% endfor %}
-            </ul>
-            {% endif %}
         <label for="exampleFormControlInput1">Enter Name</label>
         <input type="text" class="form-control" name="Name" >
         </div>
